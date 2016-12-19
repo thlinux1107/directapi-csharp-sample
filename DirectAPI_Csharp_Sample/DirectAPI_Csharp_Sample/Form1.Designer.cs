@@ -46,6 +46,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.btClear = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btLoadVaultSale = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btProcess
@@ -219,11 +221,33 @@
             this.btClear.UseVisualStyleBackColor = true;
             this.btClear.Click += new System.EventHandler(this.btClear_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(51, 158);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "- OR -";
+            // 
+            // btLoadVaultSale
+            // 
+            this.btLoadVaultSale.Location = new System.Drawing.Point(11, 175);
+            this.btLoadVaultSale.Margin = new System.Windows.Forms.Padding(2);
+            this.btLoadVaultSale.Name = "btLoadVaultSale";
+            this.btLoadVaultSale.Size = new System.Drawing.Size(139, 28);
+            this.btLoadVaultSale.TabIndex = 4;
+            this.btLoadVaultSale.Text = "Load Vault Sale";
+            this.btLoadVaultSale.UseVisualStyleBackColor = true;
+            this.btLoadVaultSale.Click += new System.EventHandler(this.btLoadVaultSale_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(745, 428);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.btLoadVaultSale);
             this.Controls.Add(this.btClear);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
@@ -270,6 +294,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btClear;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btLoadVaultSale;
     }
 }
 

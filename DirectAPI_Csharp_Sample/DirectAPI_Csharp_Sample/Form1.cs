@@ -144,7 +144,7 @@ namespace DirectAPI_Csharp_Sample
             //TH - There is no request string with a GET Charges Detail request.
             string strRequest = "";
             string strVerb = "GET";
-            string strReference = "DC6GFbyDO0";
+            string strReference = "DC6GFbyDO0"; //TH - this reference only works with test MID 173859436515
 
             txtJSONRequest.Text = strRequest;
             txtURL.Text = strURL + strReference;
@@ -181,6 +181,7 @@ namespace DirectAPI_Csharp_Sample
             web_request_headers["nonce"] = nonce;
             web_request_headers["timestamp"] = timestamp;
             web_request_headers["authorization"] = hash64_authToken;
+            web_request_headers["ignore_errors"] = "true";
             web_request.Method = verb;
 
             //TH - Format the request
@@ -246,6 +247,7 @@ namespace DirectAPI_Csharp_Sample
             web_request_headers["nonce"] = nonce;
             web_request_headers["timestamp"] = timestamp;
             web_request_headers["authorization"] = hash64_authToken;
+            web_request_headers["ignore_errors"] = "true";
             web_request.Method = verb;
 
             //TH - Get the Response and Catch any errors.
@@ -281,5 +283,37 @@ namespace DirectAPI_Csharp_Sample
             txtURL.Text = "";
             txtVerb.Text = "";
         }
+
+        private void btLoadVaultSale_Click(object sender, EventArgs e)
+        {
+            //TH - Request variables
+            string strOrderNumber = "Invoice " + DateTime.Now.Millisecond;
+            string strTotalAmount = "7";
+            string strToken = "2a827601166141c9813406284141f5d5"; //TH - this token only works with test MID 173859436515
+            string strOperation = "Read";
+            string strURL = "https://api-cert.sagepayments.com/bankcard/v1/charges?type=Sale";
+            string strVerb = "POST";
+
+            //!!!!!!!!!!!!!!!!!!!!!>>>IMPORTANT<<<!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            //TH - This is the bare minimum request for a Sale or Authorization
+            //More information may be needed to meet the requirements for a 
+            //qualified transaction. Most card-not-present transactions and transactions
+            //where the card was entered manually will require the addition of the street
+            //address, zip code, and the cvv value to qualify for the best rate.
+            //!!!!!!!!!!!!!!!!!!!!!>>>IMPORTANT<<<!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            //TH - load request message
+            string strRequest =
+                "{\"Ecommerce\":{\"OrderNumber\":\"" + strOrderNumber +
+                "\",\"Amounts\":{\"Total\":\"" + strTotalAmount +
+                "\"}},\"vault\":{\"token\":\"" + strToken +
+                "\",\"operation\":\"" + strOperation +
+                "\"}}";
+
+            txtJSONRequest.Text = strRequest;
+            txtURL.Text = strURL;
+            txtVerb.Text = strVerb;
+        }
     }
+    
 }
